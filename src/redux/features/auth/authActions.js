@@ -17,13 +17,11 @@ export const userLogin = createAsyncThunk(
       return data;
     } catch (error) {
       toast.error("Not  login ")
-      return window.location.replace("/login");
-
-      // if (error.response && error.response.data.message) {
-      //   return rejectWithValue(error.response.data.message);
-      // } else {
-      //   return rejectWithValue(error.message);
-      // }
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
     }
   }
 );
