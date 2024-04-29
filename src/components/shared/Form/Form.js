@@ -15,41 +15,44 @@ const Form = ({ formType, submitBtn, formTitle }) => {
   const [phone, setPhone] = useState("");
   const [age, setAge] = useState();
   const [gender, setGender] = useState("");
+  const [required, setRequired] = useState("required");
   // const [ages, setAges] = useState("");
 
-  const handleChange = (e) => {
-    setGender(e.target.value);
-    // Reset age on role change
-    setAge(null);
-  }
-
-  const handleSubmit = () => {
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent default form submission
     // Check if role is Male and age is less than 18 or Female and age is less than 21
-    if ((gender === "Male" && age < 18) || (gender === "Female" && age < 21)) {
+    if ((gender === "male" && age <= 18) || (gender === "female" && age <= 21)) {
+      // If age validation fails, set 'required' state to trigger validation message
+      setRequired("required");
       alert("Age must be at least 18 for Male and at least 21 for Female.");
+    } else {
+      // Age validation passed, proceed with form submission
+      setRequired(""); // Clear 'required' state
+      if (formType === "login") {
+        handleLogin(e, email, password, role);
+      } else if (formType === "register") {
+        handleRegister(
+          e,
+          name,
+          role,
+          email,
+          password,
+          phone,
+          organisationName,
+          address,
+          hospitalName,
+          website,
+          age,
+          gender
+        );
+      }
     }
-  }
+  };
   return (
     <div>
       <form
-        onSubmit={(e) => {
-          if (formType === "login")
-            return handleLogin(e, email, password, role);
-          else if (formType === "register")
-            return handleRegister(
-              e,
-              name,
-              role,
-              email,
-              password,
-              phone,
-              organisationName,
-              address,
-              hospitalName,
-              website,
-              age
-            );
-        }}
+        onSubmit={handleSubmit}
       >
         <h1 className="text-center">{formTitle}</h1>
         <hr />
@@ -167,19 +170,23 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                       onChange={(e) => setHospitalName(e.target.value)}
                     />
                   )}
+
                   {/*  */}
-                  {/* <div className="d-flex ">
+
+                  {/*  */}
+                  {role === "donar" && 
+                  <div className="d-flex">
                     <div className="form-check m-1">
                       <input
                         type="radio"
                         className="form-check-input"
-                        name="sex"
-                        id="donarRadio"
-                        value={"donar"}
-                        onChange={(e) => setRole(e.target.value)}
-                        defaultChecked
+                        name="gender"
+                        id="femaleRadio"
+                        value="female"
+                        onChange={(e) => setGender(e.target.value)}
+                        checked={gender === "female"} // <-- Check if 'gender' state matches
                       />
-                      <label htmlFor="adminRadio" className="form-check-label">
+                      <label htmlFor="femaleRadio" className="form-check-label">
                         Female
                       </label>
                     </div>
@@ -187,70 +194,29 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                       <input
                         type="radio"
                         className="form-check-input"
-                        name="sex"
-                        id="donarRadio"
-                        value={"donar"}
-                        onChange={(e) => setRole(e.target.value)}
-                        defaultChecked
+                        name="gender"
+                        id="maleRadio"
+                        value="male"
+                        onChange={(e) => setGender(e.target.value)}
+                        checked={gender === "male"} // <-- Check if 'gender' state matches
                       />
-                      <label htmlFor="adminRadio" className="form-check-label">
+                      <label htmlFor="maleRadio" className="form-check-label">
                         Male
                       </label>
                     </div>
-                 </div>
-                  {role === "donar" &&
-                  <InputType
-                    labelText={"Age"}
-                    labelFor={"forPhone"}
-                    inputType={"text"}
-                    name={"Age"}
-                    value={age}
-                    onChange={(e) => setAge(e.target.value)}
-                  />
-                  } */}
-                  {/*  */}
-                  <div>
-                    <div className="d-flex">
-                      <div className="form-check m-1">
-                        <input
-                          type="radio"
-                          className="form-check-input"
-                          name="gender"
-                          id="femaleRadio"
-                          value="gender"
-                          onChange={handleChange}
-                          defaultChecked={role === "donar"}
-                        />
-                        <label htmlFor="femaleRadio" className="form-check-label">
-                          Female
-                        </label>
-                      </div>
-                      <div className="form-check m-1">
-                        <input
-                          type="radio"
-                          className="form-check-input"
-                          name="gender"
-                          id="maleRadio"
-                          value="gender"
-                          onChange={handleChange}
-                          defaultChecked={role === "donar"}
-                        />
-                        <label htmlFor="maleRadio" className="form-check-label">
-                          Male
-                        </label>
-                      </div>
-                    </div>
-                    {role === "donar" &&
-                      <InputType
-                        labelText={"Age"}
-                        labelFor={"forAge"}
-                        inputType={"number"}
-                        name={"Age"}
-                        value={age}
-                        onChange={(e) => setAge(e.target.value)}
-                      />
-                    }
                   </div>
+                  }
+                  {role === "donar" && (
+                    <InputType
+                      labelText={"Age"}
+                      labelFor={"forAge"}
+                      inputType={"number"}
+                      name={"Age"}
+                      value={age}
+                      required={required} // <-- Pass the 'required' state for validation message
+                      onChange={(e) => setAge(e.target.value)}
+                    />
+                  )}
                   {/*  */}
 
                   <InputType
@@ -293,7 +259,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
-                
+
                 </>
               );
             }
@@ -303,21 +269,21 @@ const Form = ({ formType, submitBtn, formTitle }) => {
         <div className="d-flex flex-row justify-content-between">
           {formType === "login" ? (
             <p>
-              Not registerd yet ? Register
+              Not Registered yet ? Register
               <Link to="/register"> Here !</Link>
             </p>
           ) : (
             <p>
-              ALready Usser Please
-                <Link to="/login"> Login !</Link>
+              ALready User Please
+              <Link to="/login"> Login !</Link>
             </p>
           )}
           <button onClick={handleSubmit} className="btn btn-primary" type="submit">
             {submitBtn}
           </button>
         </div>
-          <br />
-        <Link to="/"> Not now i will try Latter !</Link>
+        <br />
+        <Link to="/"> Not now, i will try Latter !</Link>
 
       </form>
     </div>

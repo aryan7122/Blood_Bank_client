@@ -3,7 +3,7 @@ import HomePage from "./pages/HomePage";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from "./components/Routes/ProtectedRoute";
 import PublicRoute from "./components/Routes/PublicRoute";
 import Donar from "./pages/Dashboard/Donar";
@@ -25,7 +25,6 @@ import Blog from "./pages/Blog";
 function App() {
   return (
     <>
-      
       <ToastContainer />
       <Routes>
         <Route

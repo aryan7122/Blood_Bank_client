@@ -7,6 +7,7 @@ const InputType = ({
   value,
   onChange,
   name,
+  required
 }) => {
   return (
     <>
@@ -20,6 +21,7 @@ const InputType = ({
           name={name}
           value={value}
           onChange={onChange}
+          required={required}
         />
       </div>
     </>

@@ -1,5 +1,5 @@
 import React from "react";
-import { BiDonateBlood, BiUserCircle } from "react-icons/bi";
+import {  BiUserCircle } from "react-icons/bi";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 const Header = () => {
