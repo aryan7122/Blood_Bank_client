@@ -1,15 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.3abb7bea.css",
-    "main.js": "/static/js/main.60ffd255.js",
+    "main.css": "/static/css/main.4cd10c97.css",
+    "main.js": "/static/js/main.eb5a8ba8.js",
     "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/giving-blood-blood.gif": "/static/media/giving-blood-blood.fe7db84ae9b2225befbe.gif",
+    "static/media/ggg.jpg": "/static/media/ggg.3b2e8135b3f31ea3cd94.jpg",
+    "static/media/b.jpg": "/static/media/b.25cadba59c60ea0dc12d.jpg",
+    "static/media/abouttt.webp": "/static/media/abouttt.c5c7b77ead13e97c04f7.webp",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
-    "main.3abb7bea.css.map": "/static/css/main.3abb7bea.css.map",
-    "main.60ffd255.js.map": "/static/js/main.60ffd255.js.map",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "main.4cd10c97.css.map": "/static/css/main.4cd10c97.css.map",
+    "main.eb5a8ba8.js.map": "/static/js/main.eb5a8ba8.js.map",
     "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3abb7bea.css",
-    "static/js/main.60ffd255.js"
+    "static/css/main.4cd10c97.css",
+    "static/js/main.eb5a8ba8.js"
   ]
 }
