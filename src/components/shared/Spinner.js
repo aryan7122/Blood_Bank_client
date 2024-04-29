@@ -3,11 +3,10 @@ const Spinner = () => {
   return (
     <>
       <div className="loader-container">
-      <img  className="img_load" src="/assets/images/l.gif" alt="Loading" />
         {/* <div className="loader">
         </div> */}
+      <img  className="img_load" src="/assets/images/l.gif" alt="Loading" />
       </div>
-      {/* <img src={lod} alt="" /> */}
 
     </>
   );

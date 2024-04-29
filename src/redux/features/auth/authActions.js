@@ -17,6 +17,8 @@ export const userLogin = createAsyncThunk(
       return data;
     } catch (error) {
       toast.error("Not  login ")
+      return window.location.replace("/login");
+
       // if (error.response && error.response.data.message) {
       //   return rejectWithValue(error.response.data.message);
       // } else {
@@ -56,20 +58,22 @@ export const userRegister = createAsyncThunk(
         hospitalName,
         website,
       });
+    
       if (data?.success) {
-        // alert("User Registerd Successfully");
+        alert("User Registered Successfully");
         toast.success("User Registered Successfully");
         window.location.replace("/login");
       }
     } catch (error) {
       toast.error("Not Register ")
       // console.log(error);
+      // return window.location.replace("/login");
 
-      // if (error.response && error.response.data.message) {
-      //   return rejectWithValue(error.response.data.message);
-      // } else {
-      //   return rejectWithValue(error.message);
-      // }
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
     }
   }
 );
@@ -85,12 +89,13 @@ export const getCurrentUser = createAsyncThunk(
       }
     } catch (error) {
       toast.error(error.message)
+      return 
       // console.log(error);
-    //   if (error.response && error.response.data.message) {
-    //     return rejectWithValue(error.response.data.message);
-    //   } else {
-    //     return rejectWithValue(error.message);
-    //   }
+      // if (error.response && error.response.data.message) {
+      //   return rejectWithValue(error.response.data.message);
+      // } else {
+      //   return rejectWithValue(error.message);
+      // }
     }
   }
 );
