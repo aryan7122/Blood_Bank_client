@@ -1,6 +1,6 @@
 import { NavBar } from './NavBar';
 import { NavLink } from 'react-router-dom'
-import './HomeCss.css'
+import './Home.css'
 import About from './About';
 import Blog from './Blog';
 

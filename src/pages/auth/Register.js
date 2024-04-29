@@ -1,16 +1,16 @@
 import React from "react";
 import Form from "../../components/shared/Form/Form";
 import { useSelector } from "react-redux";
-import Spinner from "../../components/shared/Spinner";
+// import Spinner from "../../components/shared/Spinner";
 
 const Register = () => {
-  const { loading, error } = useSelector((state) => state.auth);
+  const {  error } = useSelector((state) => state.auth);
   return (
     <>
       {error && <span>{alert(error.message)}</span>}
-      {loading ? (
+      {/* {loading ? (
         <Spinner />
-      ) : (
+      ) : ( */}
         <div className="row g-0">
           <div className="col-md-8 form-banner ">
             <img src="./assets/images/b.jpeg" alt="registerImage" />
@@ -23,7 +23,7 @@ const Register = () => {
             />
           </div>
         </div>
-      )}
+      {/* )} */}
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavBar } from './NavBar';
-import './HomeCss.css';
+import './Home.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 // Sample data for blogs

@@ -9,18 +9,19 @@ export const userLogin = createAsyncThunk(
       //store token
       // { console.log('data:;', data) }
       if (data.success) {
-        alert(data.message);
+        // alert(data.message);
         toast.success("User login Successfully")
         localStorage.setItem("token", data.token);
         window.location.replace("/");
       }
       return data;
     } catch (error) {
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
-      } else {
-        return rejectWithValue(error.message);
-      }
+      toast.error("Not  login ")
+      // if (error.response && error.response.data.message) {
+      //   return rejectWithValue(error.response.data.message);
+      // } else {
+      //   return rejectWithValue(error.message);
+      // }
     }
   }
 );
@@ -56,17 +57,19 @@ export const userRegister = createAsyncThunk(
         website,
       });
       if (data?.success) {
-        alert("User Registerd Successfully");
+        // alert("User Registerd Successfully");
         toast.success("User Registered Successfully");
         window.location.replace("/login");
       }
     } catch (error) {
-      console.log(error);
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
-      } else {
-        return rejectWithValue(error.message);
-      }
+      toast.error("Not Register ")
+      // console.log(error);
+
+      // if (error.response && error.response.data.message) {
+      //   return rejectWithValue(error.response.data.message);
+      // } else {
+      //   return rejectWithValue(error.message);
+      // }
     }
   }
 );
@@ -81,12 +84,13 @@ export const getCurrentUser = createAsyncThunk(
         return res?.data;
       }
     } catch (error) {
-      console.log(error);
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
-      } else {
-        return rejectWithValue(error.message);
-      }
+      toast.error(error.message)
+      // console.log(error);
+    //   if (error.response && error.response.data.message) {
+    //     return rejectWithValue(error.response.data.message);
+    //   } else {
+    //     return rejectWithValue(error.message);
+    //   }
     }
   }
 );
