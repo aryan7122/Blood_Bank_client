@@ -1,5 +1,5 @@
 import React from 'react';
-import './Homecss.css';
+import './HomeCss.css';
 // import img1 from '../../public/assets/images/about_1.jpg';
 import { NavBar } from './NavBar';
 import { MdAutoStories } from "react-icons/md";
